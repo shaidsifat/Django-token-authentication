@@ -26,6 +26,9 @@ def login(request):
                         status=HTTP_404_NOT_FOUND)
     token, _ = Token.objects.get_or_create(user=user)
     return Response({'token': token.key},
+                    'user_id': user.id,
+                    'user_name': user.username,
+                    'user_email': user.email,
                     status=HTTP_200_OK)
 
 
